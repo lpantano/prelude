@@ -6,8 +6,7 @@
 
 (setq org-deadline-warning-days 14)
 (global-set-key (kbd "C-c c") 'org-capture)
-(setq org-directory "~/Documents/Org")
-(setq org-default-notes-file "~/Documents/Org/hsph.org")
+;;(setq org-directory "~/Documents/Org")
 
 (setq org-todo-keywords
       '((sequence
@@ -27,7 +26,6 @@
                       (org-agenda-show-log t)))
           (todo "WAITING") ;; projects we are waiting on
           (todo "TODO")  ;; review what is next
-          (tags "INBOX" ((org-agenda-files '("~/Documents/Org/inbox.org"))))
           (tags "PROJECT") ;; review all projects
           (tags "SOMEDAY"))) ;; review someday/maybe items
 
@@ -37,8 +35,8 @@
           (todo "NEXT")
           (tags "@errands")))))
 
-(setq org-agenda-files '("~/Documents/Org/hsph.org" "~/Documents/Org/habits.org"))
-(setq org-icalendar-combined-agenda-file "~/Dropbox/Public/hsph.ics")
+;;(setq org-agenda-files '("~/Documents/Org/hsph.org" "~/Documents/Org/habits.org"))
+;;(setq org-icalendar-combined-agenda-file "~/Dropbox/Public/hsph.ics")
 (setq org-icalendar-alarm-time 60)
 
 ;; Needs terminal-notifier (brew install terminal-notifier)
@@ -51,10 +49,10 @@
                 "-message" message))
 
 ;; use vi j/k to navigate the agenda
-(eval-after-load "org-agenda"
-  `(progn
-     (define-key org-agenda-mode-map "j" 'evil-next-line)
-     (define-key org-agenda-mode-map "k" 'evil-previous-line)))
+;;(eval-after-load "org-agenda"
+;;  `(progn
+;;     (define-key org-agenda-mode-map "j" 'evil-next-line)
+;;    (define-key org-agenda-mode-map "k" 'evil-previous-line)))
 
 (add-hook 'org-mode-hook
           (lambda ()
@@ -63,28 +61,28 @@
             (define-key org-mode-map [(shift up)] 'windmove-up)
             (define-key org-mode-map [(shift down)] 'windmove-down)))
 
-(defun esf/evil-key-bindings-for-org ()
+;;(defun esf/evil-key-bindings-for-org ()
   ;;(message "Defining evil key bindings for org")
-  (evil-declare-key 'normal org-mode-map
-    "gk" 'outline-up-heading
-    "gj" 'outline-next-visible-heading
-    "H" 'org-beginning-of-line ; smarter behaviour on headlines etc.
-    "L" 'org-end-of-line ; smarter behaviour on headlines etc.
-    "t" 'org-todo ; mark a TODO item as DONE
-    ",c" 'org-cycle
-    (kbd "TAB") 'org-cycle
-    ",e" 'org-export-dispatch
-    ",n" 'outline-next-visible-heading
-    ",p" 'outline-previous-visible-heading
-    ",t" 'org-set-tags-command
-    ",u" 'outline-up-heading
-    "$" 'org-end-of-line ; smarter behaviour on headlines etc.
-    "^" 'org-beginning-of-line ; ditto
-    "-" 'org-ctrl-c-minus ; change bullet style
-    "<" 'org-metaleft ; out-dent
-    ">" 'org-metaright ; indent
-    ))
-(esf/evil-key-bindings-for-org)
+;;  (evil-declare-key 'normal org-mode-map
+ ;;   "gk" 'outline-up-heading
+  ;;  "gj" 'outline-next-visible-heading
+   ;; "H" 'org-beginning-of-line ; smarter behaviour on headlines etc.
+;;    "L" 'org-end-of-line ; smarter behaviour on headlines etc.
+;;    "t" 'org-todo ; mark a TODO item as DONE
+;;    ",c" 'org-cycle
+;;    (kbd "TAB") 'org-cycle
+;;    ",e" 'org-export-dispatch
+;;    ",n" 'outline-next-visible-heading
+ ;;   ",p" 'outline-previous-visible-heading
+ ;;   ",t" 'org-set-tags-command
+;;    ",u" 'outline-up-heading
+;;    "$" 'org-end-of-line ; smarter behaviour on headlines etc.
+;;    "^" 'org-beginning-of-line ; ditto
+;;    "-" 'org-ctrl-c-minus ; change bullet style
+;;    "<" 'org-metaleft ; out-dent
+;;    ">" 'org-metaright ; indent
+;;    ))
+;;(esf/evil-key-bindings-for-org)
 
 ;; windmove conflicts with the org-mode changing timestamps and what not
 (add-hook 'org-shiftup-final-hook 'windmove-up)
@@ -124,26 +122,26 @@
 ;; updating the calendar on saving is annoying because it adds lag every time we
 ;; save an org-mode buffer. this waits until we have been idle for 20 minutes and
 ;; does it.
-(defvar roryk-org-sync-timer nil)
+;;(defvar roryk-org-sync-timer nil)
 
-(defvar roryk-org-sync-secs (* 60 20))
+;;(defvar roryk-org-sync-secs (* 60 20))
 
-(defun roryk-org-sync ()
-  (org-icalendar-combine-agenda-files)
-  (notify-osx "Emacs (org-mode)" "iCal sync completed."))
+;;(defun roryk-org-sync ()
+;;  (org-icalendar-combine-agenda-files)
+;;  (notify-osx "Emacs (org-mode)" "iCal sync completed."))
 
-(defun roryk-org-sync-start ()
-  "Start automated org-mode syncing"
-  (interactive)
-  (setq roryk-org-sync-timer
-        (run-with-idle-timer roryk-org-sync-secs t
-                             'roryk-org-sync)))
+;;(defun roryk-org-sync-start ()
+;;  "Start automated org-mode syncing"
+;;  (interactive)
+;;  (setq roryk-org-sync-timer
+;;        (run-with-idle-timer roryk-org-sync-secs t
+ ;;                            'roryk-org-sync)))
 
-(defun roryk-org-sync-stop ()
-  "Stop automated org-mode syncing"
-  (interactive)
-  (cancel-timer roryk-org-sync-timer))
+;;(defun roryk-org-sync-stop ()
+;;  "Stop automated org-mode syncing"
+;;  (interactive)
+;;  (cancel-timer roryk-org-sync-timer))
 
-(roryk-org-sync-start)
+;;(roryk-org-sync-start)
 
 (provide 'personal-org)

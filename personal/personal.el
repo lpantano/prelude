@@ -11,8 +11,8 @@
 ;; in my world, sentences have one space between them
 (setq sentence-end-double-space nil)
 
-(setq user-full-name "Rory Kirchner")
-(setq user-mail-address "rory.kirchner@gmail.com")
+(setq user-full-name "Lorena Pantano")
+(setq user-mail-address "loren.pantano@gmail.com")
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 (load-theme 'cyberpunk t) ; this is nice and bright
@@ -59,8 +59,8 @@
   (let ((use-dialog-box nil))
     ad-do-it))
 
-(setq todochiku-command "growlnotify")
-(require 'todochiku)
+;;(setq todochiku-command "growlnotify")
+;;(require 'todochiku)
 (setq org-show-notification-handler
       '(lambda (notification)
          (todochiku-message "org-mode notification" notification
